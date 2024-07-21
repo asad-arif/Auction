@@ -13,6 +13,9 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cors());
 
+app.get("/", async (req, res) => {
+  res.send("Server is running");
+});
 app.post("/signup", async (req, res) => {
   const user = new Users(req?.body);
   const result = await user.save();
