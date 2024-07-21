@@ -1,9 +1,14 @@
 import { useForm } from "react-hook-form";
 import { signup } from "../api";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Signup = () => {
   const form = useForm();
   const { register, handleSubmit, reset } = form;
+
+  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
 
   const submitHandler = async (data: any) => {
     const res = await signup(data);
@@ -11,6 +16,13 @@ const Signup = () => {
     localStorage.setItem("user", JSON.stringify(data));
     reset();
   };
+
+  useEffect(() => {
+    if (user?.name) {
+      navigate("/");
+    }
+  }, []);
+
   return (
     <div>
       <form

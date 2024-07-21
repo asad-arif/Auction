@@ -1,11 +1,13 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { login } from "../api";
+import { useEffect } from "react";
 
 const Login = () => {
   const navigate = useNavigate();
   const form = useForm();
   const { register, handleSubmit, reset } = form;
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
 
   const submitHandler = async (data: any) => {
     const res = await login(data);
@@ -16,6 +18,13 @@ const Login = () => {
       navigate("/home");
     }
   };
+
+  useEffect(() => {
+    if (user?.name) {
+      navigate("/");
+    }
+  }, []);
+
   return (
     <div>
       <form

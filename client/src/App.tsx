@@ -24,6 +24,7 @@ function App() {
         <Route path="/profile" element={<Private Component={Profile} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/logout" element={<Private Component={Home} />} />
       </Routes>
       {/* <Footer /> */}
     </>

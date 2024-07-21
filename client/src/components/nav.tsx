@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 
 const Nav = () => {
-  const user = JSON.parse(localStorage.getItem("user") || "{}");
-
+  const userJson = localStorage.getItem("user");
+  let user;
+  if (userJson !== null) {
+    user = JSON.parse(userJson);
+  }
   return (
     <nav className="sticky top-0 flex justify-between p-5 font-bold bg-green-500 ">
       <div className="cursor-pointer">
@@ -10,6 +13,7 @@ const Nav = () => {
           Auction Site
         </Link>
       </div>
+
       {user?.name && (
         <ul className="flex flex-wrap  gap-8 cursor-pointer ">
           <Link to="/home" className="hover:text-white">
@@ -26,9 +30,9 @@ const Nav = () => {
           </Link>
         </ul>
       )}
+
       {user?.name ? (
         <div>
-          {user?.name},{" "}
           <Link
             to={"/logout"}
             className="hover:text-white"
