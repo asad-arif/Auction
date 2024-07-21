@@ -5,8 +5,10 @@ const Users = require("./DB/users");
 const Auctions = require("./DB/auctions");
 const Bids = require("./DB/bids");
 const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cors());
@@ -74,6 +76,6 @@ app.post("/create-bid", async (req, res) => {
   res.send(result);
 });
 
-app.listen(7000, () => {
+app.listen(port, () => {
   console.log("Server is running");
 });

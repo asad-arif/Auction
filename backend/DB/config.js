@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
 
-const uri =
-  "mongodb+srv://asad:asad@auction.pdi0nqu.mongodb.net/?retryWrites=true&w=majority&appName=Auction";
+const uri = process.env.MONGO_URI;
 
 mongoose
   .connect(uri)
