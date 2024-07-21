@@ -27,7 +27,7 @@ const AuctionDetails = () => {
 
   const user = JSON.parse(localStorage.getItem("user") || "{}");
 
-  const getAuctionByIdHandler = async (id: String) => {
+  const getAuctionByIdHandler = async (id: string) => {
     const res = await getAuctionById(id);
     if (res?.status === 200) {
       setAuctionData(res.data);

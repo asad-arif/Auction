@@ -54,7 +54,7 @@ const Dashboard = () => {
     }
   };
 
-  const deleteAuctionHandler = async (id: String) => {
+  const deleteAuctionHandler = async (id: string) => {
     const res = await deleteAuction(id);
     if (res.status === 200) {
       getAllAuctionsByUserId();
