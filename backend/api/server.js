@@ -1,9 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
-require("./DB/config");
-const Users = require("./DB/users");
-const Auctions = require("./DB/auctions");
-const Bids = require("./DB/bids");
+require("../DB/config");
+const Users = require("../DB/users");
+const Auctions = require("../DB/auctions");
+const Bids = require("../DB/bids");
 const cors = require("cors");
 require("dotenv").config();
 
@@ -16,11 +16,13 @@ app.use(cors());
 app.get("/", async (req, res) => {
   res.send("Server is running");
 });
+
 app.post("/signup", async (req, res) => {
-  const user = new Users(req?.body);
+  const user = new Users(req.body);
   const result = await user.save();
   res.send(result);
 });
+
 app.post("/login", async (req, res) => {
   const data = await Users.find(req.body);
   res.send(data);
@@ -35,6 +37,7 @@ app.get("/get-all-auctions", async (req, res) => {
   const data = await Auctions.find().populate("userId", "name");
   res.send(data);
 });
+
 app.get("/get-auctions-by-userId/:userId", async (req, res) => {
   const data = await Auctions.find(req.params).populate("userId", "name");
   res.send(data);
@@ -77,3 +80,5 @@ app.post("/create-bid", async (req, res) => {
 app.listen(port, () => {
   console.log("Server is running");
 });
+
+module.exports = app;
