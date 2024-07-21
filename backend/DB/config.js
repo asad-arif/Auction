@@ -1,2 +1,4 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://127.0.0.1:27017/auction");
+mongoose.connect(
+  "mongodb+srv://asad:asad@auction.pdi0nqu.mongodb.net/?retryWrites=true&w=majority&appName=Auction"
+);
