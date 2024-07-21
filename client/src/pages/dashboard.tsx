@@ -22,8 +22,6 @@ const Dashboard = () => {
     __v: number;
   }
 
-  type AuctionItems = AuctionItem[];
-
   const form = useForm();
   const { register, reset, handleSubmit } = form;
   const [isCreate, setIsCreate] = useState(false);
@@ -208,7 +206,7 @@ const Dashboard = () => {
               )}
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-2">
-              {(data || []).map((auction: any, index) => (
+              {(data || []).map((auction: any) => (
                 <div className="flex flex-col  bg-green-200 rounded-lg p-2 justify-between cursor-pointer">
                   <div
                     onClick={() => {
