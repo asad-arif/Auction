@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "name":"auction",
+    "builds":[
+        {
+            "src":"app.tsx", "use":"@vercel/node"
+        }
+
+    ],
+    "routes":[
+        {
+            "src":"/(.*)", "dest":"./app.tsx"
+        }
+    ]
+}
